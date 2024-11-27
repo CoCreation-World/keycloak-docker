@@ -1,6 +1,6 @@
-FROM quay.io/keycloak/keycloak:25.0.6 AS builder
+FROM quay.io/keycloak/keycloak:latest AS builder
 
-ARG KC_HEALTH_ENABLED KC_METRICS_ENABLED KC_FEATURES KC_DB KC_HTTP_ENABLED PROXY_ADDRESS_FORWARDING QUARKUS_TRANSACTION_MANAGER_ENABLE_RECOVERY KC_HOSTNAME KC_LOG_LEVEL KC_DB_POOL_MIN_SIZE
+ARG KC_HEALTH_ENABLED KC_METRICS_ENABLED KC_FEATURES KC_DB KC_HTTP_ENABLED PROXY_ADDRESS_FORWARDING QUARKUS_TRANSACTION_MANAGER_ENABLE_RECOVERY KC_HOSTNAME KC_LOG_LEVEL KC_DB_POOL_MIN_SIZE WEBHOOK_EVENTS_TAKEN WEBHOOK_HTTP_BASE_PATH WEBHOOK_HTTP_AUTH_USERNAME WEBHOOK_HTTP_AUTH_PASSWORD 
 
 ADD --chown=keycloak:keycloak https://github.com/klausbetz/apple-identity-provider-keycloak/releases/download/1.13.0/apple-identity-provider-1.13.0.jar /opt/keycloak/providers/apple-identity-provider-1.13.0.jar
 ADD --chown=keycloak:keycloak https://github.com/wadahiro/keycloak-discord/releases/download/v0.6.1/keycloak-discord-0.6.1.jar /opt/keycloak/providers/keycloak-discord-0.6.1.jar
